@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WarungVision - Asisten AI UMKM Terdepan</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        'neon-blue': '#00f3ff',
+                        'neon-green': '#00ff9d',
+                        'neon-purple': '#bc13fe',
+                        'neon-red': '#ff0055',
+                        'deep-black': '#000000',
+                        'panel-black': '#0a0a0a',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'flow': 'dash 20s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scan': 'scan 2s linear infinite',
+                    },
+                    keyframes: {
+                        dash: {
+                            '0%': { strokeDashoffset: '1000' },
+                            '100%': { strokeDashoffset: '0' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        scan: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(200%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 255, 157, 0.2);
+            border-color: #00ff9d;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #00f3ff, #00ff9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* SVG Animation Classes */
+        .path-flow {
+            stroke-dasharray: 10;
+            animation: dash 1s linear infinite;
+        }
+        .path-flow-slow {
+            stroke-dasharray: 10;
+            animation: dash 3s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -20;
+            }
+        }
+        .blink-status {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body class="bg-deep-black text-white antialiased selection:bg-neon-green selection:text-black">
+
+    <nav class="fixed w-full z-50 bg-deep-black/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <span class="text-xl font-bold tracking-wider">Warung<span class="text-neon-green">Vision</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#features" class="hover:text-neon-green px-3 py-2 rounded-md text-sm font-medium transition">Fitur</a>
+                        <a href="#hybrid-ai" class="hover:text-neon-blue px-3 py-2 rounded-md text-sm font-medium transition">Hybrid AI</a>
+                        <a href="#multimodal" class="hover:text-neon-red px-3 py-2 rounded-md text-sm font-medium transition">Multimodal</a>
+                        <a href="#tech" class="hover:text-neon-purple px-3 py-2 rounded-md text-sm font-medium transition">Teknologi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl opacity-20 pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-neon-blue rounded-full mix-blend-screen filter blur-[100px] animate-pulse-slow"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-neon-purple rounded-full mix-blend-screen filter blur-[100px] animate-pulse-slow" style="animation-delay: 1s;"></div>
+        </div>
+
+        <span class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-neon-green text-sm font-semibold mb-6 backdrop-blur-sm">
+            🚀 Revolusi Digital UMKM Indonesia
+        </span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+            Asisten AI Pintar <br>
+            <span class="gradient-text">Anti Tipu & Serba Bisa</span>
+        </h1>
+        <p class="text-xl text-gray-400 max-w-3xl mb-10 leading-relaxed">
+            Satu aplikasi untuk melindungi warung Anda dari penipuan, kelola stok, catat keuangan, hingga promosi WhatsApp otomatis. Didukung oleh <strong>Gemini, OpenAI, dan Kolosal AI</strong>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+             <a href="/dashboard" class="px-8 py-4 bg-neon-green text-black font-bold rounded-lg hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,255,157,0.4)] text-center flex items-center justify-center">
+                 Coba Demo Sekarang
+            </a>
+
+        <button class="px-8 py-4 bg-transparent border border-white/20 hover:border-neon-blue hover:text-neon-blue rounded-lg transition-all font-semibold">
+                Pelajari Cara Kerja
+        </button>
+        </div>
+    </section>
+
+    <section id="hybrid-ai" class="py-20 bg-panel-black border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="text-neon-blue">Hybrid AI</span> Failover System</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Sistem "Otak Ganda" yang menjamin keamanan tanpa henti. Jika AI utama sibuk, AI cadangan langsung mengambil alih dalam hitungan milidetik.
+                </p>
+            </div>
+
+            <div class="relative w-full max-w-4xl mx-auto bg-deep-black border border-white/10 rounded-2xl p-4 md:p-10 shadow-2xl">
+                <div class="absolute top-4 right-4 flex items-center gap-2">
+                    <span class="w-3 h-3 bg-neon-green rounded-full blink-status"></span>
+                    <span class="text-xs text-neon-green font-mono">SYSTEM ONLINE</span>
+                </div>
+
+                <svg viewBox="0 0 800 400" class="w-full h-auto drop-shadow-lg">
+                    <defs>
+                        <linearGradient id="gradLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:0" />
+                            <stop offset="50%" style="stop-color:#00f3ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00f3ff;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+
+                    <g transform="translate(50, 200)">
+                        <circle cx="0" cy="0" r="30" fill="#1a1a1a" stroke="#ffffff" stroke-width="2"/>
+                        <text x="0" y="5" text-anchor="middle" fill="white" font-size="20">👤</text>
+                        <text x="0" y="45" text-anchor="middle" fill="#888" font-size="12">User</text>
+                    </g>
+
+                    <g transform="translate(250, 200)">
+                        <rect x="-40" y="-40" width="80" height="80" rx="10" fill="#111" stroke="#00f3ff" stroke-width="2"/>
+                        <text x="0" y="5" text-anchor="middle" fill="#00f3ff" font-weight="bold" font-size="14">ROUTER</text>
+                        <text x="0" y="55" text-anchor="middle" fill="#00f3ff" font-size="10">Load Balancer</text>
+                    </g>
+
+                    <g transform="translate(550, 100)">
+                        <rect x="-60" y="-40" width="120" height="80" rx="10" fill="#0a2f1a" stroke="#00ff9d" stroke-width="3"/>
+                        <text x="0" y="-5" text-anchor="middle" fill="#00ff9d" font-weight="bold" font-size="16">KOLOSAL AI</text>
+                        <text x="0" y="20" text-anchor="middle" fill="#fff" font-size="12">Primary Brain</text>
+                        <circle cx="50" cy="-30" r="5" fill="#00ff9d" class="blink-status"/>
+                    </g>
+
+                    <g transform="translate(550, 300)">
+                        <rect x="-60" y="-40" width="120" height="80" rx="10" fill="#2a1a2f" stroke="#bc13fe" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="0" y="-5" text-anchor="middle" fill="#bc13fe" font-weight="bold" font-size="16">OPENAI</text>
+                        <text x="0" y="20" text-anchor="middle" fill="#fff" font-size="12">Failover / Backup</text>
+                    </g>
+
+                    <path d="M 80 200 L 210 200" stroke="#444" stroke-width="4"/>
+                    <path d="M 80 200 L 210 200" stroke="#fff" stroke-width="2" class="path-flow"/>
+
+                    <path d="M 290 200 C 350 200, 350 100, 490 100" fill="none" stroke="#00ff9d" stroke-width="4"/>
+                    <circle r="4" fill="#fff">
+                        <animateMotion dur="1s" repeatCount="indefinite" path="M 290 200 C 350 200, 350 100, 490 100" />
+                    </circle>
+
+                    <path d="M 290 200 C 350 200, 350 300, 490 300" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="5,5"/>
+                    
+                    <text x="390" y="260" fill="#666" font-size="10">Standby</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="multimodal" class="py-20 bg-deep-black relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-neon-red/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-neon-blue/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-neon-red font-bold tracking-wider text-sm">BEYOND TEXT</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+                    Kecerdasan <span class="text-neon-purple">Multimodal</span> Lengkap
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    WarungVision tidak hanya membaca teks. Ia <strong>Melihat, Mendengar, dan Menganalisa Data</strong> layaknya asisten manusia sungguhan untuk operasional warung yang lebih mudah.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="relative bg-panel-black border border-white/10 rounded-2xl p-6 shadow-2xl group hover:border-neon-purple transition duration-500 order-2 lg:order-1">
+                    <div class="absolute top-4 left-4 text-xs font-mono text-neon-purple">SENSORY INPUT PROCESSING</div>
+                    
+                    <svg viewBox="0 0 500 400" class="w-full h-auto drop-shadow-xl">
+                        <defs>
+                            <marker id="arrow-multi" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#fff" />
+                            </marker>
+                        </defs>
+
+                        <g transform="translate(250, 200)">
+                            <circle cx="0" cy="0" r="40" fill="#1a1a2e" stroke="#bc13fe" stroke-width="2" class="animate-pulse"/>
+                            <text x="0" y="5" text-anchor="middle" fill="#fff" font-size="24">🧠</text>
+                            <circle r="50" fill="none" stroke="#bc13fe" stroke-width="1" stroke-dasharray="5,5" class="animate-spin" style="animation-duration: 10s"/>
+                        </g>
+
+                        <g transform="translate(100, 100)">
+                            <circle cx="0" cy="0" r="25" fill="#111" stroke="#00f3ff" stroke-width="2"/>
+                            <text x="0" y="5" text-anchor="middle" font-size="20">👁️</text>
+                            <text x="0" y="40" text-anchor="middle" fill="#00f3ff" font-size="10" font-weight="bold">VISION</text>
+                        </g>
+
+                        <g transform="translate(100, 300)">
+                            <circle cx="0" cy="0" r="25" fill="#111" stroke="#ff0055" stroke-width="2"/>
+                            <text x="0" y="5" text-anchor="middle" font-size="20">🎙️</text>
+                            <text x="0" y="40" text-anchor="middle" fill="#ff0055" font-size="10" font-weight="bold">SUARA</text>
+                        </g>
+
+                        <g transform="translate(400, 100)">
+                            <circle cx="0" cy="0" r="25" fill="#111" stroke="#00ff9d" stroke-width="2"/>
+                            <text x="0" y="5" text-anchor="middle" font-size="20">📄</text>
+                            <text x="0" y="40" text-anchor="middle" fill="#00ff9d" font-size="10" font-weight="bold">OCR</text>
+                        </g>
+
+                        <g transform="translate(400, 300)">
+                            <circle cx="0" cy="0" r="25" fill="#111" stroke="#fbbf24" stroke-width="2"/>
+                            <text x="0" y="5" text-anchor="middle" font-size="20">💾</text>
+                            <text x="0" y="40" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">DATA</text>
+                        </g>
+
+                        <path d="M 125 100 L 220 180" stroke="#333" stroke-width="2" />
+                        <path d="M 125 100 L 220 180" stroke="#00f3ff" stroke-width="2" class="path-flow"/>
+                        
+                        <path d="M 125 300 L 220 220" stroke="#333" stroke-width="2" />
+                        <path d="M 125 300 L 220 220" stroke="#ff0055" stroke-width="2" class="path-flow-slow"/>
+
+                        <path d="M 375 100 L 280 180" stroke="#333" stroke-width="2" />
+                        <path d="M 375 100 L 280 180" stroke="#00ff9d" stroke-width="2" class="path-flow"/>
+
+                        <path d="M 375 300 L 280 220" stroke="#333" stroke-width="2" />
+                        <path d="M 375 300 L 280 220" stroke="#fbbf24" stroke-width="2" class="path-flow-slow"/>
+
+                    </svg>
+                </div>
+
+                <div class="space-y-6 order-1 lg:order-2">
+                    
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-neon-blue/30">
+                        <div class="p-3 bg-cyan-900/30 rounded-lg text-neon-blue">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Mata Cerdas (Vision AI)</h3>
+                            <p class="text-gray-400 text-sm mt-1">
+                                AI dapat "melihat" kondisi stok di rak, memvalidasi visual bukti transfer, hingga mengenali produk makanan untuk membuat caption promosi yang sesuai gambar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-neon-red/30">
+                        <div class="p-3 bg-red-900/30 rounded-lg text-neon-red">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Telinga Tajam (Native Audio)</h3>
+                            <p class="text-gray-400 text-sm mt-1">
+                                Tak perlu mengetik. Fitur <em>Juragan Kasbon</em> mendengarkan ucapan Anda ("Bu Tejo hutang beras 5kg"), lalu AI mengubah suara langsung menjadi catatan hutang digital yang rapi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-yellow-500/30">
+                        <div class="p-3 bg-yellow-900/30 rounded-lg text-yellow-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Otak Analitis (Text Gen & RAG)</h3>
+                            <p class="text-gray-400 text-sm mt-1">
+                                <em>Konsultan Warung</em> menggabungkan pemahaman bahasa luwes dengan data nyata (Database RAG). Ia menjawab pertanyaan bisnis berdasarkan fakta belanja dan hutang toko Anda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-neon-green/30">
+                        <div class="p-3 bg-green-900/30 rounded-lg text-neon-green">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Pemindai Presisi (OCR)</h3>
+                            <p class="text-gray-400 text-sm mt-1">
+                                Kemampuan baca tulisan super cepat. Mengekstrak nominal dari struk belanja tulisan cakar ayam, hingga mendeteksi link berbahaya dalam screenshot chat penipu.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="py-20 bg-deep-black">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10">
+            
+            <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-gray-800 hover:border-neon-green transition group">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="p-3 bg-green-900/30 rounded-lg">
+                        <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold">Integrasi Salesman WA</h3>
+                </div>
+                <p class="text-gray-400 mb-6">Caption dibuat otomatis oleh Gemini ("Emak-emak" style atau Formal), diedit oleh Anda, dan dikirim instan via <strong>Fonnte API</strong>.</p>
+                
+                <svg viewBox="0 0 400 180" class="w-full h-auto bg-black/50 rounded-lg p-2 border border-white/5">
+                    <defs>
+                        <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00ff9d" />
+                        </marker>
+                    </defs>
+
+                    <g transform="translate(40, 90)">
+                        <rect x="-25" y="-30" width="50" height="60" rx="4" fill="#222" stroke="#444" stroke-width="2"/>
+                        <circle cx="0" cy="-5" r="10" fill="#666"/>
+                        <text x="0" y="20" text-anchor="middle" fill="#888" font-size="10">Foto</text>
+                    </g>
+
+                    <g transform="translate(150, 50)">
+                        <circle cx="0" cy="0" r="25" fill="#1a2f3a" stroke="#00f3ff" stroke-width="2" class="animate-pulse"/>
+                        <text x="0" y="5" text-anchor="middle" font-size="20">🤖</text>
+                        <text x="0" y="40" text-anchor="middle" fill="#00f3ff" font-size="10">Gemini AI</text>
+                    </g>
+
+                    <g transform="translate(150, 130)">
+                        <rect x="-25" y="-15" width="50" height="30" rx="4" fill="#222" stroke="#fff" stroke-dasharray="2,2"/>
+                        <text x="0" y="5" text-anchor="middle" fill="#fff" font-size="10">Edit</text>
+                    </g>
+
+                    <g transform="translate(340, 90)">
+                        <rect x="-30" y="-40" width="60" height="80" rx="8" fill="#0c4a25" stroke="#00ff9d" stroke-width="2"/>
+                        <text x="0" y="5" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">WA</text>
+                        <text x="0" y="25" text-anchor="middle" fill="#00ff9d" font-size="10">Fonnte</text>
+                    </g>
+
+                    <path d="M 65 90 Q 100 90, 125 50" fill="none" stroke="#444" stroke-width="2"/>
+                    <path d="M 65 90 Q 100 90, 125 50" fill="none" stroke="#00f3ff" stroke-width="2" class="path-flow"/>
+
+                    <path d="M 150 75 L 150 115" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4,4"/>
+
+                    <path d="M 175 130 Q 250 130, 310 90" fill="none" stroke="#444" stroke-width="2"/>
+                    <path d="M 175 130 Q 250 130, 310 90" fill="none" stroke="#00ff9d" stroke-width="2" class="path-flow-slow"/>
+
+                    <circle r="4" fill="#fff">
+                        <animateMotion dur="2s" repeatCount="indefinite" path="M 175 130 Q 250 130, 310 90" />
+                    </circle>
+
+                    <g transform="translate(260, 40)" class="animate-float">
+                        <path d="M 0 0 L 60 0 L 60 35 L 10 35 L 0 45 L 0 0" fill="#fff"/>
+                        <text x="30" y="20" text-anchor="middle" fill="#000" font-size="10" font-weight="bold">Promo!</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-gray-800 hover:border-neon-red transition group">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="p-3 bg-red-900/30 rounded-lg">
+                        <svg class="w-8 h-8 text-neon-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold">Safe Browsing & WHOIS</h3>
+                </div>
+                <p class="text-gray-400 mb-6">Validasi URL berlapis. Cek database <strong>Google Safe Browsing</strong> dan analisa umur domain via <strong>Python WHOIS</strong> untuk mendeteksi web baru.</p>
+                
+                <svg viewBox="0 0 400 180" class="w-full h-auto bg-black/50 rounded-lg p-2 border border-white/5 overflow-hidden">
+                    <defs>
+                        <linearGradient id="scanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(255, 0, 85, 0)" />
+                            <stop offset="50%" style="stop-color:rgba(255, 0, 85, 0.8)" />
+                            <stop offset="100%" style="stop-color:rgba(255, 0, 85, 0)" />
+                        </linearGradient>
+                    </defs>
+
+                    <g transform="translate(50, 90)">
+                        <rect x="-40" y="-15" width="80" height="30" rx="4" fill="#222" stroke="#666"/>
+                        <text x="0" y="5" text-anchor="middle" fill="#fff" font-size="10">URL</text>
+                        <text x="0" y="-20" text-anchor="middle" font-size="14" class="blink-status">⚠️</text>
+                    </g>
+
+                    <rect x="10" y="60" width="5" height="60" fill="url(#scanGradient)">
+                        <animate attributeName="x" from="10" to="90" dur="1.5s" repeatCount="indefinite" />
+                    </rect>
+
+                    <g transform="translate(300, 50)">
+                        <rect x="-60" y="-20" width="120" height="40" rx="4" fill="#111" stroke="#4285F4" stroke-width="2"/>
+                        <text x="-40" y="5" text-anchor="middle" fill="#4285F4" font-weight="bold" font-size="16">G</text>
+                        <text x="10" y="5" text-anchor="middle" fill="#fff" font-size="10">Safe Browsing API</text>
+                        <circle cx="45" cy="0" r="4" fill="#00ff9d" class="blink-status"/>
+                    </g>
+
+                    <g transform="translate(300, 130)">
+                        <rect x="-60" y="-20" width="120" height="40" rx="4" fill="#111" stroke="#FBBC05" stroke-width="2"/>
+                        <text x="-40" y="5" text-anchor="middle" fill="#FBBC05" font-weight="bold" font-size="16">Py</text>
+                        <text x="10" y="5" text-anchor="middle" fill="#fff" font-size="10">WHOIS Lookup</text>
+                         <circle cx="45" cy="0" r="4" fill="#00ff9d" class="blink-status" style="animation-delay: 0.5s"/>
+                    </g>
+
+                    <path d="M 90 90 L 240 50" stroke="#444" stroke-width="1"/>
+                    <path d="M 90 90 L 240 50" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5" class="path-flow"/>
+
+                    <path d="M 90 90 L 240 130" stroke="#444" stroke-width="1"/>
+                    <path d="M 90 90 L 240 130" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5" class="path-flow-slow"/>
+
+                    <g transform="translate(200, 90)">
+                         <rect x="-40" y="-10" width="80" height="20" rx="10" fill="#330000" stroke="#ff0055"/>
+                         <text x="0" y="4" text-anchor="middle" fill="#ff0055" font-size="10" font-weight="bold">ANALYZING...</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-4 max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">Fitur Unggulan WarungVision</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-panel-black p-6 rounded-xl border border-white/10 card-hover group relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition"></div>
+                <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-4 text-blue-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Cek Transfer</h3>
+                <p class="text-gray-400 text-sm mb-4">Analisis bukti transfer vs tanggal hari ini. Mendeteksi editan font dan tanggal palsu.</p>
+                <div class="w-full bg-black h-24 rounded border border-white/5 flex items-center justify-center overflow-hidden relative">
+                    <div class="text-[10px] text-green-400 font-mono bg-green-900/20 px-2 py-1 rounded border border-green-500/50">STATUS: ASLI</div>
+                    <div class="absolute bottom-1 right-1 text-[8px] text-gray-600">Gemini Vision</div>
+                </div>
+            </div>
+
+            <div class="bg-panel-black p-6 rounded-xl border border-white/10 card-hover group relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition"></div>
+                <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mb-4 text-purple-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Smart Inventory</h3>
+                <p class="text-gray-400 text-sm mb-4">Foto rak, langsung jadi data stok. Kualifikasi: Aman, Menipis, atau Hampir Habis.</p>
+                <div class="w-full bg-black h-24 rounded border border-white/5 flex flex-col justify-center p-3 gap-2">
+                    <div class="w-full h-2 bg-gray-800 rounded"><div class="w-3/4 h-full bg-green-500 rounded"></div></div>
+                    <div class="w-full h-2 bg-gray-800 rounded"><div class="w-1/4 h-full bg-yellow-500 rounded"></div></div>
+                    <div class="w-full h-2 bg-gray-800 rounded"><div class="w-full h-full bg-red-500 rounded animate-pulse"></div></div>
+                </div>
+            </div>
+
+            <div class="bg-panel-black p-6 rounded-xl border border-white/10 card-hover group relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-red-500/10 rounded-full blur-3xl group-hover:bg-red-500/20 transition"></div>
+                <div class="w-12 h-12 bg-red-900/30 rounded-lg flex items-center justify-center mb-4 text-red-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Tangkal Tipu</h3>
+                <p class="text-gray-400 text-sm mb-4">Proteksi 3 Lapis: OCR Pesan + Cek Teknis URL + Analisis Psikologis AI.</p>
+                <div class="w-full bg-black h-24 rounded border border-white/5 flex items-center justify-center">
+                    <svg viewBox="0 0 100 40" class="w-3/4">
+                        <rect x="0" y="10" width="100" height="20" rx="4" fill="#330000" stroke="#ff0000"/>
+                        <text x="50" y="24" text-anchor="middle" fill="#ff0000" font-size="8" font-weight="bold">🚫 PHISHING DETECTED</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bg-panel-black p-6 rounded-xl border border-white/10 card-hover group relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition"></div>
+                <div class="w-12 h-12 bg-yellow-900/30 rounded-lg flex items-center justify-center mb-4 text-yellow-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Struk to Data</h3>
+                <p class="text-gray-400 text-sm mb-4">Baca tulisan cakar ayam di struk. Ekstrak Total, Tanggal, dan Nama Toko otomatis.</p>
+                <div class="w-full bg-black h-24 rounded border border-white/5 p-2 font-mono text-[10px] text-gray-400 flex flex-col justify-center">
+                    <div class="flex justify-between border-b border-gray-800 pb-1"><span>Toko Jaya</span><span>12/12</span></div>
+                    <div class="flex justify-between mt-1"><span>Beras</span><span>50.000</span></div>
+                    <div class="flex justify-between text-yellow-500 font-bold mt-2"><span>TOTAL</span><span>Rp 120k</span></div>
+                </div>
+            </div>
+
+            <div class="bg-panel-black p-6 rounded-xl border border-white/10 card-hover group relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition"></div>
+                <div class="w-12 h-12 bg-indigo-900/30 rounded-lg flex items-center justify-center mb-4 text-indigo-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Juragan Kasbon</h3>
+                <p class="text-gray-400 text-sm mb-4">Catat hutang lewat SUARA. AI mengekstrak Nama, Barang, dan Nominal otomatis.</p>
+                <div class="w-full bg-black h-24 rounded border border-white/5 flex items-center justify-center gap-1">
+                    <div class="w-1 h-4 bg-indigo-500 rounded animate-pulse"></div>
+                    <div class="w-1 h-8 bg-indigo-500 rounded animate-pulse" style="animation-delay: 0.1s"></div>
+                    <div class="w-1 h-6 bg-indigo-500 rounded animate-pulse" style="animation-delay: 0.2s"></div>
+                    <div class="w-1 h-10 bg-indigo-500 rounded animate-pulse" style="animation-delay: 0.15s"></div>
+                    <div class="w-1 h-5 bg-indigo-500 rounded animate-pulse" style="animation-delay: 0.3s"></div>
+                </div>
+            </div>
+
+            <div class="bg-panel-black p-6 rounded-xl border border-white/10 card-hover group relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition"></div>
+                <div class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mb-4 text-green-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Salesman WA</h3>
+                <p class="text-gray-400 text-sm mb-4">AI Copywriter (Gaya Emak-emak/Gaul) + Kirim Broadcast via Fonnte.</p>
+                <div class="w-full bg-black h-24 rounded border border-white/5 flex items-center p-3 gap-2">
+                    <div class="w-8 h-8 bg-gray-700 rounded-full flex-shrink-0"></div>
+                    <div class="bg-green-900/40 p-2 rounded-lg rounded-tl-none text-[9px] text-white">
+                        "Bundaaa! Promo beras murah nih 😍 Buruan serbuuu!"
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-panel-black p-6 rounded-xl border border-white/10 card-hover group relative overflow-hidden md:col-span-2 lg:col-span-3">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-3xl group-hover:bg-fuchsia-500/20 transition"></div>
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 bg-fuchsia-900/30 rounded-lg flex items-center justify-center flex-shrink-0 text-fuchsia-400">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2">Konsultan Warung (RAG System)</h3>
+                        <p class="text-gray-400 text-sm mb-4 max-w-2xl">
+                            Tanya jawab bisnis dengan AI yang mengerti kondisi warung Anda secara real-time. 
+                            AI membaca data belanja, hutang, dan stok untuk memberikan saran yang relevan, bukan jawaban umum.
+                        </p>
+                        <div class="w-full bg-black h-auto rounded border border-white/5 p-4 flex flex-col gap-3 font-mono text-xs">
+                            <div class="self-end bg-gray-800 text-gray-200 px-3 py-2 rounded-lg rounded-tr-none">
+                                "Keuangan warungku bulan ini sehat gak?"
+                            </div>
+                            <div class="self-start flex gap-2 max-w-lg">
+                                <div class="w-6 h-6 bg-fuchsia-900 rounded-full flex items-center justify-center text-[8px] flex-shrink-0">AI</div>
+                                <div class="bg-fuchsia-900/30 text-fuchsia-200 px-3 py-2 rounded-lg rounded-tl-none border border-fuchsia-500/20">
+                                    "Berdasarkan data, pengeluaran belanja bulan ini Rp 5.2jt, tapi piutang pelanggan masih Rp 1.5jt (terutama Bu Tejo). Saran saya: tagih dulu hutangnya sebelum kulakan lagi ya."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-white/10 py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xl font-bold mb-2 tracking-wider">Warung<span class="text-neon-green">Vision</span></p>
+            <p class="text-gray-500 text-sm">© 2025 Powered by Gemini 2.5, Kolosal K2, OpenAI & Fonnte.</p>
+            <div class="flex justify-center gap-4 mt-6">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span class="text-xs text-gray-500">Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

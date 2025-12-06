@@ -1,0 +1,13 @@
+# Virtual env
+env/
+venv/
+
+# Editor
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# Environment & secrets
+.env
+*.db
