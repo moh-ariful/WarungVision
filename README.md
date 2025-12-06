@@ -735,7 +735,7 @@ pip install -r requirements.txt
 2. Screenshot chat mencurigakan dari WhatsApp/Telegram
 3. Upload screenshot
 4. Klik "Analisa"
-5. Tunggu 15-20 detik (sedang cek 5 lapisan keamanan)
+5. Tunggu 20-25 detik (sedang cek 5 lapisan keamanan)
 6. Lihat verdict: AMAN (hijau) atau BERBAHAYA (merah)
 
 **Tips**: Jangan klik link dulu sebelum dicek. Jika verdict BERBAHAYA, langsung blokir nomor.
@@ -778,7 +778,7 @@ pip install -r requirements.txt
 4. Bicara dengan jelas: "Bu Tejo ambil Beras 5 kilo sama Minyak 2 liter, total 95 ribu, bayar minggu depan"
 5. Stop rekaman
 6. Klik "Catat Suara"
-7. Tunggu 15-25 detik
+7. Tunggu 20-25 detik
 8. Data hutang otomatis tersimpan
 
 **Alternatif**: Upload file audio MP3/WAV yang sudah direkam.
