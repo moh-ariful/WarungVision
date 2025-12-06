@@ -48,8 +48,8 @@ button.primary { font-size: 1.2rem !important; padding: 12px 20px !important; fo
 </style>
 """
 
-FOOTER = "<div class='footer-info'>Dibuat untuk UMKM Indonesia 🇮🇩 | Powered by Gemini, Kolosal AI & Fonnte</div>"
-HEADER = "<div class='description'>Asisten pintar warung: Cek Transfer, Stok, Penipuan & Promosi WA</div>"
+FOOTER = "<div class='footer-info'><strong>Dibuat untuk UMKM Indonesia 🇮🇩 | Powered by Kolosal AI, OpenAI, Gemini & Fonnte</strong></div>"
+HEADER = "<div class='description'>Asisten pintar warung: Konsultan Warung, Cek Stok, Cegah Penipuan, Promosi WA dll</div>"
 
 # --- HTML Generators ---
 

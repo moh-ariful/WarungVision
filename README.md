@@ -236,9 +236,9 @@ VERDICT: 🔴 BERBAHAYA - JANGAN KLIK!
 - ✅ **Logging otomatis** (semua riwayat kirim tersimpan)
 
 **Supported Styles:**
-- 🧕 **Gaya Emak-emak**: *"Bunda, kue kering renyah nih! Buruan sebelum kehabisan yaaa 😍🍪"*
+- 🧕 **Gaya Emak-emak**: *"Bunda, kue kering renyah nih! Buruan sebelum kehabisan yaaa"*
 - 💼 **Gaya Formal**: *"Kami menawarkan paket kue kering premium untuk Lebaran 2025."*
-- 😎 **Gaya Gaul**: *"Bestie! Kue kering crunchy abis, wajib coba deh 🔥"*
+- 😎 **Gaya Gaul**: *"Bestie! Kue kering crunchy abis, wajib coba deh"*
 
 ---
 
@@ -1712,37 +1712,37 @@ Berikut panduan lengkap cara menggunakan setiap fitur WarungVision:
 
 ```
 warungvision/
-├── app.py                        # ⭐ File utama aplikasi (Gradio interface)
-├── config.py                     # ⚙️ Konfigurasi & environment variables
-├── utils.py                      # 🔧 Helper functions (tanggal, timezone)
+├── app.py                        # File utama aplikasi (Gradio interface)
+├── config.py                     # Konfigurasi & environment variables
+├── utils.py                      # Helper functions (tanggal, timezone)
 │
-├── models.py                     # 🤖 Gemini 2.5 Flash wrapper
-├── models_consultant.py          # 🤖 Hybrid AI (Kolosal + OpenAI) untuk Konsultan
-├── models_tangkal_tipu.py        # 🤖 Hybrid AI (Kolosal + OpenAI) untuk Tangkal Tipu
+├── models.py                     # Gemini 2.5 Flash wrapper
+├── models_consultant.py          # Hybrid AI (Kolosal + OpenAI) untuk Konsultan
+├── models_tangkal_tipu.py        # Hybrid AI (Kolosal + OpenAI) untuk Tangkal Tipu
 │
-├── analyzers.py                  # 🧠 Business logic: Transfer & Inventory
-├── analyzers_expense.py          # 🧠 Business logic: OCR struk belanja
-├── analyzers_kasbon.py           # 🧠 Business logic: Audio-to-debt parser
-├── analyzers_salesman.py         # 🧠 Business logic: Caption generator + Fonnte sender
-├── analyzers_consultant.py       # 🧠 Business logic: RAG consultant (baca database)
-├── analyzers_tangkal_tipu.py     # 🧠 Business logic: Multi-layer scam checker
+├── analyzers.py                  # Business logic: Transfer & Inventory
+├── analyzers_expense.py          # Business logic: OCR struk belanja
+├── analyzers_kasbon.py           # Business logic: Audio-to-debt parser
+├── analyzers_salesman.py         # Business logic: Caption generator + Fonnte sender
+├── analyzers_consultant.py       # Business logic: RAG consultant (baca database)
+├── analyzers_tangkal_tipu.py     # Business logic: Multi-layer scam checker
 │
-├── storage.py                    # 🗄️ Database connection (transfer & inventory logs)
-├── storage_expense.py            # 🗄️ Database handler: Pengeluaran
-├── storage_kasbon.py             # 🗄️ Database handler: Hutang pelanggan
-├── storage_salesman.py           # 🗄️ Database handler: Promosi WA
-├── storage_tangkal_tipu.py       # 🗄️ Database handler: Scam logs
-├── storage_consultant.py         # 🗄️ Database query: Business summary (untuk Konsultan)
+├── storage.py                    # Database connection (transfer & inventory logs)
+├── storage_expense.py            # Database handler: Pengeluaran
+├── storage_kasbon.py             # Database handler: Hutang pelanggan
+├── storage_salesman.py           # Database handler: Promosi WA
+├── storage_tangkal_tipu.py       # Database handler: Scam logs
+├── storage_consultant.py         # Database query: Business summary (untuk Konsultan)
 │
-├── ui_templates.py               # 🎨 HTML/CSS formatters untuk output
+├── ui_templates.py               # HTML/CSS formatters untuk output
 │
-├── requirements.txt              # 📦 Daftar library Python yang dibutuhkan
-├── .env.example                  # 🔑 Template untuk file .env (API Keys)
-├── .env                          # 🔐 File API Keys (TIDAK DI-UPLOAD KE GITHUB!)
+├── requirements.txt              # Daftar library Python yang dibutuhkan
+├── .env.example                  # Template untuk file .env (API Keys)
+├── .env                          # File API Keys (TIDAK DI-UPLOAD KE GITHUB!)
 │
-├── warungvision.db               # 🗄️ SQLite database (auto-generated saat run pertama kali)
+├── warungvision.db               # SQLite database (auto-generated saat run pertama kali)
 │
-├── screenshots/                  # 📸 Folder screenshot untuk README
+├── screenshots/                  # Folder screenshot untuk README
 │   ├── cek-transfer.webp
 │   ├── cek-transfer-input.webp
 │   ├── cek-transfer-hasil.webp
@@ -1766,7 +1766,7 @@ warungvision/
 │   ├── konsultan-warung-input.webp
 │   └── konsultan-warung-jawaban.webp
 │
-├── assets/                       # 🎨 Asset visual untuk README
+├── assets/                       # Asset visual untuk README
 │   ├── banner.webp
 │   ├── ai-integration.webp
 │   ├── failover-system.webp
@@ -1776,10 +1776,10 @@ warungvision/
 │   ├── error-handling.webp
 │   └── arsitektur-warungvision.webp
 │
-├── venv/                         # 🌐 Virtual environment (jangan di-upload ke GitHub)
+├── venv/                         # Virtual environment (jangan di-upload ke GitHub)
 │
-├── README.md                     # 📖 File dokumentasi ini
-└── LICENSE                       # 📜 Lisensi (MIT)
+├── README.md                     # File dokumentasi ini
+└── LICENSE                       # Lisensi (MIT)
 ```
 
 ### 📂 **Penjelasan Struktur:**
@@ -1819,19 +1819,6 @@ Tonton demo lengkap WarungVision di YouTube:
 
 Akses aplikasi WarungVision yang sudah deploy:  
 🔗 **[https://warungvision.ddns.net](https://warungvision.ddns.net)**
-
-**Bisa diakses dari:**
-- 💻 Laptop/PC
-- 📱 HP Android/iOS
-- 🌍 Dari mana saja (selama ada internet)
-
-**Fitur yang bisa dicoba:**
-- Upload foto bukti transfer untuk cek keaslian
-- Upload foto rak untuk analisis stok
-- Screenshot chat mencurigakan untuk deteksi penipuan
-- Foto struk belanja untuk catat pengeluaran
-- Rekam suara untuk catat hutang pelanggan
-- Tanya konsultan AI tentang bisnis warung
 
 ---
 
@@ -1954,11 +1941,11 @@ Gemini 2.5 Flash • Kolosal AI • OpenAI GPT-4o-mini • Fonnte • Gradio
 
 ### 🔍 **Testing Coverage**
 
-- **Total Test Cases**: 500+
-- **Fitur Transfer**: 100 sampel (50 asli, 50 palsu)
-- **Fitur Tangkal Tipu**: 200 sampel (100 phishing, 100 legitimate)
-- **Fitur OCR**: 100 struk (50 cetakan, 50 tulisan tangan)
-- **Fitur Audio**: 50 rekaman (berbagai aksen Indonesia)
+- **Total Test Cases**: 80+
+- **Fitur Transfer**: 20 sampel 
+- **Fitur Tangkal Tipu**: 20 sampel
+- **Fitur OCR**: 20 struk 
+- **Fitur Audio**: 20 rekaman
 
 ### 📈 **Estimasi Impact**
 
@@ -1971,4 +1958,4 @@ Jika 10,000 warung pakai WarungVision:
 
 **🎉 Terima kasih sudah membaca dokumentasi ini sampai akhir!**
 
-**Selamat mencoba WarungVision dan semoga warung Anda semakin maju! 🚀**
+**Selamat mencoba WarungVision dan semoga warung Anda semakin maju! **

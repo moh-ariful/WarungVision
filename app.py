@@ -14,7 +14,7 @@ from analyzers_salesman import SalesmanAnalyzer
 from storage_salesman import init_db_salesman
 from analyzers_kasbon import KasbonAnalyzer
 from storage_kasbon import init_db_kasbon, log_debt, get_recent_debts
-# --- Import Modul Konsultan (NEW) ---
+# --- Import Modul Konsultan ---
 from analyzers_consultant import ConsultantAnalyzer
 # ------------------------------------
 import ui_templates as ui  # Import template modul
@@ -154,7 +154,7 @@ def build_interface() -> gr.Blocks:
         except Exception as e:
             return f"⚠️ Error System: {str(e)}", get_kasbon_history_html()
 
-    # --- Handler Konsultan Warung (NEW) ---
+    # --- Handler Konsultan Warung ---
     def handle_consult(question, progress=gr.Progress()):
         if not question: return "⚠️ Pertanyaan kosong."
         
@@ -174,45 +174,19 @@ def build_interface() -> gr.Blocks:
         gr.Markdown("# 🏪 WarungVision")
         gr.HTML(ui.HEADER)
 
-        with gr.Tab("💳 Cek Transfer"):
+        # TAB 1: KONSULTAN (Judul diperpendek agar muat)
+        with gr.Tab("🤝 Konsultan"):
             with gr.Row():
                 with gr.Column():
-                    tf_img = gr.Image(label="Bukti Transfer", type="filepath", height=350)
-                    tf_note = gr.Textbox(label="Catatan", placeholder="Misal: Cek nominalnya sudah benar belum?")
-                    btn_tf = gr.Button("✅ Periksa", variant="primary")
+                    gr.Markdown("### 🤖 Asisten Bisnis Pintar (Hybrid AI)")
+                    gr.Markdown("Tanyakan apa saja tentang kondisi warungmu. AI akan menjawab berdasarkan data belanja, hutang, dan stok.")
+                    consult_input = gr.Textbox(label="Pertanyaan Anda", placeholder="Misal: 'Keuanganku sehat gak?', 'Siapa yang hutangnya paling banyak?'")
+                    btn_consult = gr.Button("Tanya Konsultan", variant="primary")
                 with gr.Column():
-                    tf_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
-            btn_tf.click(handle_transfer, inputs=[tf_img, tf_note], outputs=[tf_out])
+                    consult_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Jawaban akan muncul di sini...</div>")
+            btn_consult.click(handle_consult, inputs=[consult_input], outputs=[consult_out])
 
-        with gr.Tab("📦 Stok & Rak"):
-            with gr.Row():
-                with gr.Column():
-                    inv_img = gr.Image(label="Foto Rak", type="filepath", height=350)
-                    inv_note = gr.Textbox(label="Catatan", placeholder="Misal: Cek apakah stok minyak goreng menipis?")
-                    btn_inv = gr.Button("🔎 Analisa Stok", variant="primary")
-                with gr.Column():
-                    inv_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
-            btn_inv.click(handle_inventory, inputs=[inv_img, inv_note], outputs=[inv_out])
-
-        with gr.Tab("🛡️ Tangkal Tipu"):
-            with gr.Row():
-                with gr.Column():
-                    scam_img = gr.Image(label="Screenshot Chat", type="filepath", height=350)
-                    btn_scam = gr.Button("🔍 Analisa", variant="primary")
-                with gr.Column():
-                    scam_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
-            btn_scam.click(handle_scam, inputs=[scam_img], outputs=[scam_out])
-
-        with gr.Tab("💸 Catat Pengeluaran"):
-            with gr.Row():
-                with gr.Column():
-                    exp_img = gr.Image(label="Foto Struk", type="filepath", height=350)
-                    btn_exp = gr.Button("💾 Catat", variant="primary")
-                with gr.Column():
-                    exp_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
-                    exp_hist = gr.HTML(get_history_html()) 
-            btn_exp.click(handle_expense, inputs=[exp_img], outputs=[exp_out, exp_hist])
-
+        # TAB 2: SALESMAN WA (Judul diperpendek, Posisi Prioritas ke-2)
         with gr.Tab("📢 Salesman WA"):
             with gr.Row():
                 with gr.Column():
@@ -227,8 +201,30 @@ def build_interface() -> gr.Blocks:
                     sale_prev = gr.HTML("")
             btn_gen.click(handle_sales_gen, inputs=[sale_img, sale_style], outputs=[sale_cap, sale_prev])
             btn_send.click(handle_sales_send, inputs=[sale_img, sale_phone, sale_cap], outputs=[sale_stat])
-        
-        with gr.Tab("🎙️ Juragan Kasbon"):
+
+        # TAB 3: STOK (Judul diperpendek)
+        with gr.Tab("📦 Stok & Rak"):
+            with gr.Row():
+                with gr.Column():
+                    inv_img = gr.Image(label="Foto Rak", type="filepath", height=350)
+                    inv_note = gr.Textbox(label="Catatan", placeholder="Misal: Cek apakah stok minyak goreng menipis?")
+                    btn_inv = gr.Button("🔎 Analisa Stok", variant="primary")
+                with gr.Column():
+                    inv_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
+            btn_inv.click(handle_inventory, inputs=[inv_img, inv_note], outputs=[inv_out])
+
+        # TAB 4: ANTI-TIPU (Judul diperpendek)
+        with gr.Tab("🛡️ Anti-Tipu"):
+            with gr.Row():
+                with gr.Column():
+                    scam_img = gr.Image(label="Screenshot Chat", type="filepath", height=350)
+                    btn_scam = gr.Button("🔍 Analisa", variant="primary")
+                with gr.Column():
+                    scam_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
+            btn_scam.click(handle_scam, inputs=[scam_img], outputs=[scam_out])
+
+        # TAB 5: KASBON (Judul diperpendek)
+        with gr.Tab("🎙️ Kasbon"):
             with gr.Row():
                 with gr.Column():
                     gr.Markdown("### 🗣️ Rekam Transaksi Hutang")
@@ -239,18 +235,28 @@ def build_interface() -> gr.Blocks:
                     kasbon_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil pencatatan suara...</div>")
                     kasbon_hist = gr.HTML(get_kasbon_history_html())
             btn_kasbon.click(handle_kasbon, inputs=[kasbon_audio], outputs=[kasbon_out, kasbon_hist])
-            
-        # --- TAB BARU: KONSULTAN WARUNG ---
-        with gr.Tab("🤝 Konsultan Warung"):
+
+        # TAB 6: BELANJA (Judul diperpendek)
+        with gr.Tab("💸 Catat Belanja"):
             with gr.Row():
                 with gr.Column():
-                    gr.Markdown("### 🤖 Asisten Bisnis Pintar (Hybrid AI)")
-                    gr.Markdown("Tanyakan apa saja tentang kondisi warungmu. AI akan menjawab berdasarkan data belanja, hutang, dan stok.")
-                    consult_input = gr.Textbox(label="Pertanyaan Anda", placeholder="Misal: 'Keuanganku sehat gak?', 'Siapa yang hutangnya paling banyak?'")
-                    btn_consult = gr.Button("Tanya Konsultan", variant="primary")
+                    exp_img = gr.Image(label="Foto Struk", type="filepath", height=350)
+                    btn_exp = gr.Button("💾 Catat", variant="primary")
                 with gr.Column():
-                    consult_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Jawaban akan muncul di sini...</div>")
-            btn_consult.click(handle_consult, inputs=[consult_input], outputs=[consult_out])
+                    exp_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
+                    exp_hist = gr.HTML(get_history_html()) 
+            btn_exp.click(handle_expense, inputs=[exp_img], outputs=[exp_out, exp_hist])
+
+        # TAB 7: TRANSFER (Judul diperpendek, Posisi Terakhir)
+        with gr.Tab("💳 Cek-Transfer"):
+            with gr.Row():
+                with gr.Column():
+                    tf_img = gr.Image(label="Bukti Transfer", type="filepath", height=350)
+                    tf_note = gr.Textbox(label="Catatan", placeholder="Misal: Cek nominalnya sudah benar belum?")
+                    btn_tf = gr.Button("✅ Periksa", variant="primary")
+                with gr.Column():
+                    tf_out = gr.HTML("<div class='result-box' style='text-align:center; color:#ccc'>Hasil disini...</div>")
+            btn_tf.click(handle_transfer, inputs=[tf_img, tf_note], outputs=[tf_out])
 
         gr.HTML(ui.FOOTER)
 
