@@ -141,7 +141,7 @@ Integrasi dengan Fonnte API untuk kirim promosi otomatis. AI generate caption me
 
 Deteksi screenshot transfer editan dengan AI. Upload foto bukti transfer, sistem akan menganalisis konsistensi font, validasi tanggal, tanda digital editing, dan status transaksi. Hasil analisis berupa status warna (Hijau/Kuning/Merah) dengan confidence score dan rekomendasi tindakan.
 
-**Akurasi**: 94% | **Waktu**: 5-10 detik
+**Akurasi**: 94% | **Waktu**: 20-25 detik
 
 ![Input Transfer](screenshots/cek-transfer-input.webp)
 ![Hasil Analisis Transfer](screenshots/cek-transfer-hasil.webp)
@@ -154,7 +154,7 @@ Deteksi screenshot transfer editan dengan AI. Upload foto bukti transfer, sistem
 
 Analisis stok barang otomatis hanya dengan foto rak. AI mengidentifikasi produk, kategorisasi otomatis (Mie, Minuman, Sembako, dll), estimasi jumlah, dan status stok (AMAN/MULAI MENIPIS/HAMPIR HABIS). Sistem memberikan rekomendasi restock berdasarkan analisis visual.
 
-**Akurasi**: 91% | **Waktu**: 10-15 detik
+**Akurasi**: 91% | **Waktu**: 20-25 detik
 
 ![Input Foto Rak](screenshots/stok-rak-input.webp)
 ![Hasil Analisis Stok](screenshots/stok-rak-hasil.webp)
@@ -167,7 +167,7 @@ Analisis stok barang otomatis hanya dengan foto rak. AI mengidentifikasi produk,
 
 Deteksi penipuan & phishing dengan 5 lapisan keamanan. Upload screenshot chat mencurigakan, sistem akan mengecek URL dengan Google Safe Browsing, validasi umur domain via WHOIS, scraping HTML untuk cari form sensitif, dan analisis konteks dengan Kolosal AI. Output berupa verdict (AMAN/BERBAHAYA) dengan penjelasan teknis lengkap.
 
-**Akurasi**: 96.8% | **Waktu**: 15-20 detik
+**Akurasi**: 96.8% | **Waktu**: 20-25 detik
 
 ![Input Chat Mencurigakan](screenshots/tangkal-tipu-input.webp)
 ![Hasil Analisis Tangkal Tipu](screenshots/tangkal-tipu-hasil.webp)
@@ -180,7 +180,7 @@ Deteksi penipuan & phishing dengan 5 lapisan keamanan. Upload screenshot chat me
 
 OCR otomatis untuk struk belanja. Foto struk (cetakan atau tulisan tangan), AI akan ekstrak nama toko, tanggal transaksi, total belanja, dan ringkasan barang. Data otomatis tersimpan ke database dengan riwayat 5 transaksi terakhir.
 
-**Akurasi**: 89% (tulisan tangan), 97% (cetakan) | **Waktu**: 15-20 detik
+**Akurasi**: 89% (tulisan tangan), 97% (cetakan) | **Waktu**: 20-25 detik
 
 ![Input Struk](screenshots/catat-pengeluaran-input.webp)
 ![Hasil Catat Pengeluaran](screenshots/catat-pengeluaran-hasil.webp)
@@ -193,7 +193,7 @@ OCR otomatis untuk struk belanja. Foto struk (cetakan atau tulisan tangan), AI a
 
 Generate caption promosi + kirim ke WhatsApp otomatis. Upload foto produk, pilih gaya bahasa (Emak-emak/Formal/Gaul), AI akan membuat caption menarik dalam 10 detik. Edit caption jika perlu, masukkan nomor WhatsApp, lalu kirim otomatis via Fonnte API.
 
-**Waktu**: 5-8 detik (generate caption)
+**Waktu**: 20-25 detik (generate caption)
 
 ![Input Produk](screenshots/salesman-wa-input.webp)
 ![Generate Caption](screenshots/salesman-wa-caption.webp)
@@ -207,7 +207,7 @@ Generate caption promosi + kirim ke WhatsApp otomatis. Upload foto produk, pilih
 
 Catat hutang pelanggan hanya dengan rekam suara. Bicara dalam Bahasa Indonesia, AI akan ekstrak nama pelanggan, daftar barang, total nominal, dan jatuh tempo. Mendukung rekaman live atau upload file MP3/WAV. Data tersimpan di buku kasbon digital dengan riwayat lengkap.
 
-**Akurasi**: 92% | **Waktu**: 15-25 detik
+**Akurasi**: 92% | **Waktu**: 20-25 detik
 
 ![Rekam Audio](screenshots/juragan-kasbon-rekam.webp)
 ![Hasil Kasbon](screenshots/juragan-kasbon-hasil.webp)
@@ -229,7 +229,7 @@ AI advisor dengan RAG (Retrieval-Augmented Generation) yang membaca data warung 
 
 ## Teknologi yang Digunakan
 
-### AI & Machine Learning
+### AI Kolosal AI, Gemini & OpenAI
 
 | Teknologi | Model | Fungsi Utama |
 |-----------|-------|--------------|
