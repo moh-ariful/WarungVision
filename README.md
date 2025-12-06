@@ -180,7 +180,7 @@ Deteksi penipuan & phishing dengan 5 lapisan keamanan. Upload screenshot chat me
 
 OCR otomatis untuk struk belanja. Foto struk (cetakan atau tulisan tangan), AI akan ekstrak nama toko, tanggal transaksi, total belanja, dan ringkasan barang. Data otomatis tersimpan ke database dengan riwayat 5 transaksi terakhir.
 
-**Akurasi**: 89% (tulisan tangan), 97% (cetakan) | **Waktu**: 8-12 detik
+**Akurasi**: 89% (tulisan tangan), 97% (cetakan) | **Waktu**: 15-20 detik
 
 ![Input Struk](screenshots/catat-pengeluaran-input.webp)
 ![Hasil Catat Pengeluaran](screenshots/catat-pengeluaran-hasil.webp)
@@ -708,7 +708,7 @@ pip install -r requirements.txt
 2. Upload foto screenshot transfer
 3. (Opsional) Tulis catatan: "Cek apakah nominal Rp 500.000 benar"
 4. Klik "Periksa"
-5. Tunggu 5-10 detik
+5. Tunggu 20-25 detik
 6. Lihat hasil: Status warna (Hijau=ASLI, Kuning=PERLU CEK, Merah=PALSU)
 
 **Tips**: Gunakan screenshot asli (bukan foto layar HP), pastikan angka nominal terlihat jelas.
@@ -722,7 +722,7 @@ pip install -r requirements.txt
 3. Upload foto
 4. (Opsional) Tulis pertanyaan: "Apakah minyak goreng masih aman?"
 5. Klik "Analisa Stok"
-6. Tunggu 10-15 detik
+6. Tunggu 20-25 detik
 7. Lihat laporan per kategori barang
 
 **Tips**: Foto dari jarak 1-2 meter dengan cahaya cukup.
@@ -748,7 +748,7 @@ pip install -r requirements.txt
 2. Foto struk belanja (cetakan atau tulisan tangan)
 3. Upload foto
 4. Klik "Catat"
-5. Tunggu 8-12 detik
+5. Tunggu 20-25 detik
 6. Data otomatis tersimpan + muncul di riwayat
 
 **Tips**: Foto dengan cahaya cukup, pastikan angka total terlihat jelas.
@@ -761,7 +761,7 @@ pip install -r requirements.txt
 2. Upload foto produk yang mau dipromosikan
 3. Pilih gaya bahasa: Emak-emak / Formal / Gaul
 4. Klik "Buat Caption"
-5. Tunggu 5-8 detik
+5. Tunggu 15-20 detik
 6. Edit caption jika perlu (tambah harga, alamat)
 7. Masukkan nomor WhatsApp tujuan (contoh: 081234567890)
 8. Klik "Kirim"
@@ -850,7 +850,7 @@ warungvision/
 Tonton demo lengkap WarungVision di YouTube:  
 **[https://youtu.be/hH1BjAYbl3Y](https://youtu.be/hH1BjAYbl3Y)**
 
-**Durasi**: 8 menit  
+**Durasi**: 6 menit  
 **Isi**: Problem statement, demo 7 fitur, highlight teknologi, impact UMKM
 
 ---
