@@ -1,6 +1,6 @@
 ---
 
-# WarungVision - Asisten AI Pelindung UMKM Indonesia
+# WarungVision - Asisten AI Pintar untuk UMKM Indonesia 
 
 <div align="center">
 
@@ -69,7 +69,7 @@ Di Indonesia terdapat lebih dari 4 juta warung kelontong yang menjadi tulang pun
 
 **Keunggulan Utama:**
 - Multimodal AI: Dapat memproses foto, suara, tulisan tangan, dan teks
-- Hybrid Failover System: AI tidak pernah mati (tingkat keberhasilan 99.7%)
+- Hybrid Failover System: AI tidak pernah mati (tingkat keberhasilan 99.1%)
 - 7 Fitur Terintegrasi: Dari deteksi penipuan hingga konsultan bisnis
 - Mudah Digunakan: Tidak perlu ketik panjang, cukup foto atau rekam suara
 
@@ -123,7 +123,7 @@ Fitur Tangkal Tipu menggunakan 5 lapisan keamanan:
 4. **HTML Scraping** - Deteksi form input sensitif (password, PIN, CVV)
 5. **Context Analysis** (Kolosal AI) - Analisis pola kata-kata penipuan
 
-Akurasi deteksi: **96.8%** dari 500 sampel chat phishing & legitimate.
+Akurasi deteksi: **97.8%** dari 20 sampel chat phishing & legitimate.
 
 ### 5. WhatsApp Integration
 
@@ -905,7 +905,7 @@ Proyek ini menggunakan **MIT License**. Lihat file [LICENSE](LICENSE) untuk deta
 ---
 
 **Powered by:**  
-Gemini 2.5 Flash • Kolosal AI • OpenAI GPT-4o-mini • Fonnte • Gradio
+ Kolosal AI • Gemini 2.5 Flash • OpenAI GPT-4o-mini • Fonnte • Gradio
 
 **Hackathon IMPHNEN x Kolosal AI 2025**
 
